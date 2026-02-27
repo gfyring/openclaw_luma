@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "himalaya": {
+      "source": "steipete/clawdis",
+      "sourceType": "github",
+      "computedHash": "0d3baf6039b8f2d19266ec535b114cacca8a6ab1d288b8373a83b1a1585cefb8"
+    },
+    "home-assistant-best-practices": {
+      "source": "homeassistant-ai/skills",
+      "sourceType": "github",
+      "computedHash": "c1c765b3c48db9aae9fd8f69dc703128092c61287d6feea7d945cb2fc4e3bb46"
+    }
+  }
+}

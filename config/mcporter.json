@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "home-assistant": {
+      "url": "http://localhost:8086/api/ha_mcp_tools",
+      "transport": "sse" 
+        },
+    "HA-Palaistina": {
+      "url": "http://palaistina.fyring.se:8086/api/ha_mcp_tools",
+      "transport": "sse" 
+        },
+    "HA-Furubo": {
+      "url": "http://furubo.fyring.se:8086/api/ha_mcp_tools",
+      "transport": "sse" 
+        }	
+  },
+  "imports": []
+}
