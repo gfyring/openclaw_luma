@@ -21,5 +21,3 @@ This file contains curated long-term memories, decisions, and lessons learned. I
 ### Email Recipient Context
 
 - **Primary Recipient:** When I read emails from my inbox (luma@fyring.se), I am a primary recipient. Gustav may or may not also be a recipient, but it's not a guarantee for every email. I will act based on the understanding that these emails are primarily directed to me, with the possibility of Gustav being a co-recipient.
-
----

@@ -99,9 +99,17 @@ Home Assistant is available via MCP through mcporter.
 
 ---
 
-## Home Assistant Instances
+## Home Assistant Locations and Routing
 
-Three instances are configured. See HOME_ASSISTANT_BEST_PRACTICES.md for routing rules. See HOME_ASSISTANT.md, HOME_ASSISTANT_FURUBO.md, HOME_ASSISTANT_PALAISTINA.md for entity references. Never use a Home Assistant tool without first confirming which MCP server to target.
+To ensure correct control, always determine the target Home Assistant instance *before* making any tool calls. `HOME_ASSISTANT_BEST_PRACTICES.md` contains the primary routing rules.
+
+| Location Mentioned          | MCP Server       | Details/Reference File                                   |
+|-----------------------------|------------------|----------------------------------------------------------|
+| **(None) / "Hemma" / "here" / Lumagatan** | `home-assistant` | This file (`TOOLS.md`) contains entity IDs for this primary location. |
+| "Palaistina" / "landet"   | `HA-Palaistina`  | See `HOME_ASSISTANT_PALAISTINA.md` for specific details and entity examples. |
+| "Furubo"                    | `HA-Furubo`      | See `HOME_ASSISTANT_FURUBO.md` for specific details and entity examples.     |
+
+**DEFAULT BEHAVIOR:** If no specific home is mentioned, always use the `home-assistant` MCP server for Lumagatan. Do not ask for clarification unless the request is genuinely ambiguous (e.g., "turn off all lights everywhere").
 
 ---
 
@@ -113,6 +121,15 @@ Himalaya is configured to manage mail for `luma@fyring.se`. It can read and send
 - **Email Address:** `luma@fyring.se`
 - **Default Account:** Yes
 - **CLI Tool:** `himalaya`
+
+### Email Folders
+| Folder Name | Purpose |
+|-------------|---------|
+| Handled     | Emails already processed or completed. |
+| Archive     | Emails for future reference, no action needed. |
+| Action      | Emails requiring action, but not immediately. |
+| Waiting     | Emails where a response or information is pending. |
+| References  | Emails with useful information, links, or documents. |
 
 ### Reading Mail
 
@@ -175,4 +192,4 @@ Your message body goes here."
 
 ## Quirks & Known Issues
 
-- Example: \"The bedroom Zigbee bulb sometimes doesn\'t respond on first command — retry once before reporting failure\"\n- Example: \"TV entity goes `unavailable` when on standby — check with `ha_get_state` first\"\n- **Observation:** The \'Passive BLE monitor integration update\' entity is still present in `update` domain, despite BLE sensors being removed. This indicates the integration might still be installed.\n- **Observation:** A sensor state reads: "Network score: 0 • Apple TV: HBO Max (off) • TV today: unknown • Sensor health: degraded". This suggests a potential network or TV-related issue.\n\n---\n\n## How to Update This File\n\nWhen you add a new device or rename something:\n1. Ask the agent: \"Update TOOLS.md with the new entity ID for [device]\"\n2. Or edit directly and tell the agent: \"TOOLS.md has been updated, re-read it\"\n\nThe agent should proactively update this file when it discovers new entity IDs during tasks.\n
+- Example: \"The bedroom Zigbee bulb sometimes doesn\'t respond on first command — retry once before reporting failure\"\n- Example: \"TV entity goes `unavailable` when on standby — check with `ha_get_state` first\"\n- **Observation:** The \'Passive BLE monitor integration update\' entity is still present in `update` domain, despite BLE sensors being removed. This indicates the integration might still be installed.\n- **Observation:** A sensor state reads: "Network score: 0 • Apple TV: HBO Max (off) • TV today: unknown • Sensor health: degraded". This suggests a potential network or TV-related issue.\n- **TV Volume Adjustment:** If `ha_media_player_volume_set` or `ha_call_service` with `volume_set` fails, use `mcporter call home-assistant ha_call_service domain=media_player service=volume_down entity_id=media_player.55_philips_8008` (or `volume_up`) for incremental adjustments.\n\n---\n\n## How to Update This File\n\nWhen you add a new device or rename something:\n1. Ask the agent: \"Update TOOLS.md with the new entity ID for [device]\"\n2. Or edit directly and tell the agent: \"TOOLS.md has been updated, re-read it\"\n\nThe agent should proactively update this file when it discovers new entity IDs during tasks.\n
