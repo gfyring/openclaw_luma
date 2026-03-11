@@ -19,3 +19,48 @@ When a user explicitly states that a service or configuration is "done" or "conf
 - **Notes**: Updated internal workflow to respect user's explicit control over external service management. Will no longer attempt to verify or restart `telegram-logger` unless specifically instructed by the user.
 
 ---
+
+## [LRN-20260310-001] Preference for Tavily Search over standard web_search
+
+**Logged**: 2026-03-10T18:48:00Z
+**Priority**: high
+**Status**: promoted
+**Area**: tools
+
+### Summary
+The standard `web_search` tool is currently unconfigured. The custom `tavily-search` skill is the preferred way to perform web searches in this workspace.
+
+### Details
+The `web_search` tool in OpenClaw requires a Perplexity or Brave API key, which is currently missing. However, the `tavily-search` skill is installed and fully functional via its CLI scripts. This was discovered when a test query for Stockholm weather failed with a missing key error.
+
+### Suggested Action
+Always use `node ~/.openclaw/workspace/skills/tavily-search/scripts/search.mjs "query"` for searching. This provides cleaner, AI-optimized results.
+
+### Resolution
+- **Resolved**: 2026-03-10T18:48:00Z
+- **Promoted**: TOOLS.md, AGENTS.md
+- **Notes**: Added explicit usage instructions to TOOLS.md and a mandatory recall/usage rule to AGENTS.md.
+
+---
+
+## [LRN-20260310-002] Multi-step tool use for status checking
+
+**Logged**: 2026-03-10T18:57:00Z
+**Priority**: low
+**Status**: resolved
+**Area**: tools
+
+### Summary
+`openclaw status` command did not complete instantly and required `process` tool to poll for output.
+
+### Details
+When running `openclaw status` via `exec`, the command may not return immediately on some systems (like a Raspberry Pi). Instead of failing or hanging, I successfully used `process(action="poll")` with a session ID to retrieve the results.
+
+### Suggested Action
+When a command via `exec` returns a "still running" message, use the `process` tool with `action="poll"` to fetch the output rather than assuming an error.
+
+### Resolution
+- **Resolved**: 2026-03-10T18:57:00Z
+- **Notes**: Successfully retrieved the gateway status using this two-step process.
+
+---

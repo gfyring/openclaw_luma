@@ -11,7 +11,11 @@
     "HA-Furubo": {
       "url": "http://furubo.fyring.se:8086/api/ha_mcp_tools",
       "transport": "sse" 
-        }	
+        },
+     "Tavily": {
+       "url":"https://mcp.tavily.com/mcp/?tavilyApiKey=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",
+       "transport": "HTTP"
+	}	
   },
   "imports": []
 }

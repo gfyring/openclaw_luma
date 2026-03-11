@@ -45,32 +45,17 @@ Run the interactive wizard to set up an account:
 himalaya account configure
 ```
 
-Or create `~/.config/himalaya/config.toml` manually:
-
-```toml
-[accounts.personal]
-email = "you@example.com"
-display-name = "Your Name"
-default = true
-
-backend.type = "imap"
-backend.host = "imap.example.com"
-backend.port = 993
-backend.encryption.type = "tls"
-backend.login = "you@example.com"
-backend.auth.type = "password"
-backend.auth.cmd = "pass show email/imap"  # or use keyring
-
-message.send.backend.type = "smtp"
-message.send.backend.host = "smtp.example.com"
-message.send.backend.port = 587
-message.send.backend.encryption.type = "start-tls"
-message.send.backend.login = "you@example.com"
-message.send.backend.auth.type = "password"
-message.send.backend.auth.cmd = "pass show email/smtp"
-```
-
 ## Common Operations
+
+Usage: himalaya message COMMAND [OPTIONS] <TARGET> <ID>...
+
+Arguments:
+  <TARGET>
+          The name of the target folder
+
+  <ID>...
+          The list of envelopes ids
+
 
 ### List Folders
 
@@ -169,13 +154,13 @@ himalaya message write -H "To:recipient@example.com" -H "Subject:Test" "Message 
 Move to folder:
 
 ```bash
-himalaya message move 42 "Archive"
+himalaya message move "Archive" 42
 ```
 
 Copy to folder:
 
 ```bash
-himalaya message copy 42 "Important"
+himalaya message copy "Important" 42
 ```
 
 ### Delete an Email

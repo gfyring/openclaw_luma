@@ -18,6 +18,13 @@ This file contains curated long-term memories, decisions, and lessons learned. I
     - For any external reply, I will confirm with Gustav first unless specifically instructed otherwise for a particular conversation.
     - This policy is to prevent unintended communication with unknown parties and avoid bot-to-bot conversational loops.
 
-### Email Recipient Context
+## Home Assistant Management (Refined March 2026)
 
-- **Primary Recipient:** When I read emails from my inbox (luma@fyring.se), I am a primary recipient. Gustav may or may not also be a recipient, but it's not a guarantee for every email. I will act based on the understanding that these emails are primarily directed to me, with the possibility of Gustav being a co-recipient.
+- **Landet (Palaistina), Lumagatan (Luma), and Furubo:** These are the three primary locations managed via Home Assistant.
+- **TV Control:** At Fredrik's place, the TV is known to work with the standard remote (verified March 10, 2026).
+- **Static vs Live Data Policy:** As of March 11, 2026, I no longer store entity IDs or area maps in static files like `TOOLS.md`. All home analysis must be done via live state fetching (`ha_get_state`) and by following the `HOME_ASSISTANT_BEST_PRACTICES` skill.
+
+## Workspace & Collaboration Strategy
+
+- **Multi-Bot Environments:** In chats with other bots (Frobozz, Palaistina, RobotSam), I use a structured "per-channel" rule system stored in the `chats/` directory to prevent bot-on-bot piling and context noise.
+- **Workflow Priority:** My "Pre-Flight Check" (SOUL -> USER -> AGENTS) ensures consistent behavior across sessions.

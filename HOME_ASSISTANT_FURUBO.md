@@ -1,54 +1,34 @@
 # Home Assistant — Furubo
 
-MCP server: HA-Furubo
+MCP server: `HA-Furubo`
 
-Activated when Gustav says: "Furubo"
+This file contains specific knowledge for the home "Furubo".
+
+## Common Task Workflows
+- **Status Check:** Use `ha_get_overview` to fetch current domain stats (temperature, motion, connectivity).
+- **Control:** The controllable devices are primarily `media_player` (TVs) and `switch` (Smart Plugs).
+- **Monitoring:** Heavily reliant on BLE sensors (temperature, motion, toothbrush) and network/router status.
 
 ## Key Facts
+- Location: Furubo
+- Features: Router monitoring, BLE sensors, TV media players, smart plugs.
 
-- Total entities: 380
-- Total domains: 19
-- Location name: "Furubo"
+## Motion & BLE Sensors
+- Motion sensor active status: `automation.motion_sensor_active`
+- Motion sensor last update (datetime): `input_datetime.motion_sensor_last_update`
+- BLE Sensors: Temperature, Humidity, RSSI, Battery, Motion (IDs start with `ble_`)
 
-### Latest Motion Activity Check
+## Media Players
+| Friendly name | Entity ID |
+|--------------|-----------|
+| Samsung AU9075 43 TV | `media_player.samsung_au9075_43_tv` |
+| Telia TV | `media_player.telia_tv` |
 
-To find the last time a motion sensor detected activity (state became "on"):
-1. Identify the relevant motion sensor entity ID (e.g., `binary_sensor.motion_sensor_occupancy`).
-2. Determine a suitable `start_time` (e.g., two weeks back from current date).
-3. Use `mcporter call "HA-Furubo.ha_get_history(entity_ids: [\"<ENTITY_ID>\"])"` with the calculated `start_time`.
-4. Iterate through the `states` list in the output to find the *most recent* entry where `"state": "on"`.
-5. Extract the `last_changed` timestamp from that specific `"on"` state entry.
-6. Adjust the timestamp to local timezone (GMT+1).
+## Switches (Smart Plugs)
+| Friendly name | Entity ID |
+|--------------|-----------|
+| Plug Vardagsrum | `switch.plug_vardagsrum` |
+| Plug 3 | `switch.plug_3` |
 
-## Known Entity IDs (Populate this section as entities are discovered)
-
-### Lights
-(No traditional light entities found in this instance's domain overview.)
-
-### Sensors
-- **Count:** 281
-- **Examples:**
-  - `ble temperature E4D32C0EF02F`
-  - `ble steps CB6919D57BEB`
-  - `Zigbee2MQTT Bridge Version`
-  - `AP3-iPhone-D76Q377LC7 Average Active Pace`
-  - `ble humidity 48872D800B19`
-  - `motion sensor Occupancy`
-  - **Rörelsesensor:** (Fysisk enhet märkt som "motion sensor")
-    - Rörelse: `binary_sensor.motion_sensor_occupancy` (Senaste aktivitet: se `last_changed`)
-    - Temperatur: `sensor.motion_sensor_temperature`
-    - Ljusstyrka: `sensor.motion_sensor_illuminance`
-    - Batteri: `sensor.motion_sensor_battery`
-    - Spänning: `sensor.motion_sensor_voltage`
-
-### Switches
-- **Count:** 14
-- **Examples:**
-  - `shellyplugsg3-8cbfea939e00 Switch 0`
-  - `plug_vardagsrum LED disabled night`
-  - `Zigbee2MQTT Bridge Permit join`
-
-### Automations
-- **Count:** 1
-- **Entities:**
-  - `motion sensor active`
+## Automations
+- `motion sensor active`
