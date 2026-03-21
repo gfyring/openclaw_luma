@@ -15,6 +15,11 @@
 - [x] Research "en liquidación" status.
 - [x] Identify property lawyers in Lanzarote.
 - [x] Preliminary ZAR/Solar research.
-- [ ] Obtain "Nota Simple Mercantil" (Current @bot task).
+- [x] Obtain "Nota Simple Mercantil" (Current @bot task).
+- [x] Analyze Nota Simple Mercantil (March 2026).
+    - **Entity:** GREGORIA SOCIEDAD LIMITADA EN LIQUIDACION (Confirmed S.L., not S.A.).
+    - **Status:** In liquidation since 2007; NIF revoked Oct 2022; dormant.
+    - **Liquidator:** Göran Rise.
+    - **Registry Conflict:** Confirmed mismatch (Property Registry says S.A., Mercantile Registry says S.L.).
 - [ ] Verify exact finca boundaries against ZAR polygons (Requires surveyor/topografía).
 - [ ] Confirm lawyer engagement.
